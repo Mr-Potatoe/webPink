@@ -10,6 +10,8 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -37,40 +39,39 @@
     </header>
 
     <div class="page">
-        <main class="contact-main">
+        <main class="contact-main" data-aos="fade-up" data-aos-duration="1200">
             <div class="contact-full">
-                <div class="contact-section">
+                <div class="contact-section" data-aos="fade-right" data-aos-duration="1000">
                     <div class="cs-top mobile-show">
                         <h1>Reach Me</h1>
                         <div class="border-line"></div>
                     </div>
-                    <div class="cs-item email">
+                    <div class="cs-item email" data-aos="fade-up" data-aos-delay="200">
                         <div class="icon"><i class="fas fa-envelope"></i></div>
                         <div class="text">
                             <div class="placeHolder">E-mail</div>
-                            <div class="info">xxxxxxxxxxx@gmail.com</div>
+                            <div class="info">moralesjestly7@gmail.com</div>
                         </div>
                     </div>
-                    <div class="cs-item number">
-                        <div class="icon"><i class="fas fa-phone"></i></i></div>
+                    <div class="cs-item number" data-aos="fade-up" data-aos-delay="300">
+                        <div class="icon"><i class="fas fa-phone"></i></div>
                         <div class="text">
                             <div class="placeHolder">Phone</div>
-                            <div class="info">+61 xxxxxxxxx</div>
+                            <div class="info">+61 949952679</div>
                         </div>
                     </div>
-                    <div class="cs-item address">
+                    <div class="cs-item address" data-aos="fade-up" data-aos-delay="400">
                         <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
                         <div class="text">
                             <div class="placeHolder">Address</div>
-                            <div class="info">Address, Address</div>
+                            <div class="info">Ramon Magsaysay, ZDS</div>
                         </div>
                     </div>
                 </div>
-                <section class="contact-form">
+                <section class="contact-form" data-aos="fade-left" data-aos-duration="1000">
                     <h1>Contact Me</h1>
                     <div class="border-line"></div>
-                    <!-- <p>Feel free to get in touch with me by filling out the form below.</p> -->
-                    <div class="contact-submit-after">
+                    <div class="contact-submit-after" data-aos="zoom-in" data-aos-delay="500">
                         <div class="box">
                             <i class="fa-solid fa-circle-check csa-icon"></i>
                             <div class="csa-text">Message sent successfully</div>
@@ -78,50 +79,36 @@
                         </div>
                     </div>
                     <form id="contact-form" class="form-section" novalidate>
-                        <div class="form-group name-section">
+                        <div class="form-group name-section" data-aos="fade-up" data-aos-delay="600">
                             <label for="name">Name</label>
                             <input type="text" id="name" name="name" required>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" data-aos="fade-up" data-aos-delay="700">
                             <label for="email">Email</label>
                             <input type="email" id="email" name="email" required>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" data-aos="fade-up" data-aos-delay="800">
                             <label for="message">Message</label>
                             <textarea id="message" name="message" rows="5" required></textarea>
                         </div>
-                        <div class="error"><i class="fa-solid fa-circle-xmark error-icon"></i>Please fill out all the
-                            fields
-                        </div>
-                        <div class="email-error"><i class="fa-solid fa-circle-xmark error-icon"></i>Email address is not
-                            valid</div>
-                        <button type="submit" id="contact-submit" class="contact-button">
+                        <div class="error" data-aos="fade-in" data-aos-delay="900"><i class="fa-solid fa-circle-xmark error-icon"></i>Please fill out all the fields</div>
+                        <div class="email-error" data-aos="fade-in" data-aos-delay="1000"><i class="fa-solid fa-circle-xmark error-icon"></i>Email address is not valid</div>
+                        <button type="submit" id="contact-submit" class="contact-button" data-aos="zoom-in" data-aos-delay="1100">
                             <div class="contact-load">
                                 <div class="line"></div>
                                 <div class="line"></div>
                                 <div class="line"></div>
                             </div>
-                            <div class="submit-text">
-                                Submit
-                            </div>
+                            <div class="submit-text">Submit</div>
                         </button>
                     </form>
                 </section>
             </div>
         </main>
-        <footer class="footer">
-            <div class="left">
-                &copy; 2023 • R. Charlox • All Rights Reserved
-            </div>
-            <div class="right">
-                <div class="social"><a href="https://www.facebook.com/ritoncharlox" target="_blank"><i
-                            class="fa-brands fa-facebook"></i></a></div>
-                <div class="social"><a href="https://www.instagram.com/ritoncharlox" target="_blank"><i class="fa-brands fa-instagram"></i></a></div>
-                <div class="social"><a href="https://www.linkedin.com/in/ritoncharlox" target="_blank"><i class="fa-brands fa-linkedin"></i></a></div>
-                <div class="social"><a href="https://github.com/ritoncharlox" target="_blank"><i class="fa-brands fa-github"></i></a></div>
-            </div>
-        </footer>
-    </div>
+        
+    <!-- Placeholder for Footer -->
+    <div id="footer-placeholder"></div>
+</div>
 
 
 
@@ -135,6 +122,23 @@
             emailjs.init("Email Js API Key (keep it in .env file or seperately)");
         })();
     </script>
+
+    <script>
+
+        // Fetch and load the footer
+        fetch('components/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+    </script>
+
+        <!-- AOS -->
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script>
+            AOS.init();
+        </script>
+        
 
 </body>
 

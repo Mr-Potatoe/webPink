@@ -10,6 +10,8 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -37,39 +39,32 @@
     </header>
 
     <div class="page">
+
+
         <section class="about" id="about">
             <div class="about-content">
-                <div class="column right">
+                <div class="column right" data-aos="fade-left" data-aos-duration="1000">
                     <img class="main_imagex" src="Assets/jestly_main.jpg" alt="">
                 </div>
-                <div class="column left">
+                <div class="column left" data-aos="fade-right" data-aos-duration="1000">
                     <div class="text">I'm Jestly and I'm a <span id="typed" class="iAm"></span></div>
-                    <p>
-                        A 20-year-old Web Developer with a deep passion for crafting elegant and user-friendly websites.
-                        With a creative mindset and strong technical skills, I specialize in turning web
-                        ideas into visually stunning and functional realities.
-
-                    </p>
+                    <p style="text-align: justify;">
+                        I am a 20-year-old Web Developer with a strong passion for creating elegant, user-friendly websites. 
+                        With a combination of creative thinking and technical expertise, I specialize in transforming ideas 
+                        into visually appealing and highly functional web solutions. Currently, I am furthering my skills at 
+                        Northwestern Mindanao State College of Science and Technology.
+                    </p>                    
                     <div class="buttons">
-                        <a href="#">Download CV</a>
+                        <a href="Assets/Jestly_CV.pdf" download>Download CV</a>
                         <a href="SRC/pages/contact.html" class="cm-button">Contact Me</a>
                     </div>
                 </div>
             </div>
         </section>
+        
 
-        <footer class="footer">
-            <div class="left">
-                &copy; 2023 • R. Charlox • All Rights Reserved
-            </div>
-            <div class="right">
-                <div class="social"><a href="https://www.facebook.com/ritoncharlox" target="_blank"><i
-                            class="fa-brands fa-facebook"></i></a></div>
-                <div class="social"><a href="https://www.instagram.com/ritoncharlox" target="_blank"><i class="fa-brands fa-instagram"></i></a></div>
-                <div class="social"><a href="https://www.linkedin.com/in/ritoncharlox" target="_blank"><i class="fa-brands fa-linkedin"></i></a></div>
-                <div class="social"><a href="https://github.com/ritoncharlox" target="_blank"><i class="fa-brands fa-github"></i></a></div>
-            </div>
-        </footer>
+     <!-- Placeholder for Footer -->
+     <div id="footer-placeholder"></div>
     </div>
 
     <div class="nav-touch-close" id="nav-tc-js"></div>
@@ -83,6 +78,21 @@
             typeSpeed: 55,
         });
     </script>
+    <script>
+
+        // Fetch and load the footer
+        fetch('SRC/pages/components/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+    </script>
+    <!-- AOS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+
 
 </body>
 

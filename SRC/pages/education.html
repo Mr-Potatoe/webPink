@@ -10,7 +10,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 
 <body>
@@ -39,60 +39,62 @@
 
 
     <div class="page">
-        <main class="education-main">
+        <main class="education-main" data-aos="fade-up" data-aos-duration="1200">
             <div class="education-section">
-                <div class="study first">
+                <div class="study first" data-aos="fade-right" data-aos-duration="1000">
                     <div class="image">
-                        <img src="/Assets/education/three.jpg" alt="">
+                        <img src="/Assets/education/three.jpg" alt="Tertiary Education">
                     </div>
                     <div class="line"></div>
                     <div class="texts">
                         <div class="header">Bachelor's Degree</div>
-                        <div class="name">xxxxxxxxx Institute</div>
+                        <div class="name">Northwestern Mindanao State College of Science and Technology</div>
                         <div class="year">2022-2025</div>
-                        <div class="text">I am pursuing Bachelors degree in information and technology (BIT).</div>
+                        <div class="text">Currently pursuing a Bachelor's degree in Information Technology, focusing on web development and digital innovation.</div>
                     </div>
                 </div>
-                <div class="study second">
+                <div class="study second" data-aos="fade-left" data-aos-duration="1000">
                     <div class="image">
-                        <img src="/Assets/education/one.png" alt="">
+                        <img src="/Assets/education/one.png" alt="Senior High School">
                     </div>
                     <div class="line"></div>
                     <div class="texts">
-                        <div class="header">Higher Secondary Degree</div>
-                        <div class="name">xxxxxxxxxxxx Higher Secondary School</div>
-                        <div class="year">2018-2021</div>
-                        <div class="text">I studied regular course from std. 8 to 10, and then completed higher
-                            secondary (+2) majoring in science. </div>
+                        <div class="header">Senior High School</div>
+                        <div class="name">International College Of Philsouth</div>
+                        <div class="year">2020-2022</div>
+                        <div class="text">Completed Senior High School with a specialization in Science, Technology, Engineering, and Mathematics (STEM).</div>
                     </div>
                 </div>
-                <div class="study third">
+                <div class="study third" data-aos="fade-right" data-aos-duration="1000">
                     <div class="image">
-                        <img src="/Assets/education/two.jpg" alt="">
+                        <img src="/Assets/education/two.jpg" alt="Junior High School">
                     </div>
                     <div class="line"></div>
                     <div class="texts">
-                        <div class="header">Lower Secondary Degree</div>
-                        <div class="name">xxxxxx English Boarding School</div>
-                        <div class="year">2008-2018</div>
-                        <div class="text">This is my first school, I joined here at the elementary level and completed
-                            my lower secondary (std. 8) and secondary (std. 10) in regular subjects.</div>
+                        <div class="header">Junior High School</div>
+                        <div class="name">Sapa Anding Agricultural Vocational Technical School</div>
+                        <div class="year">2016-2020</div>
+                        <div class="text">Graduated from Junior High School with a focus on vocational and technical education, enriching both academic and practical skills.</div>
+                    </div>
+                </div>
+                <div class="study second" data-aos="fade-left" data-aos-duration="1000">
+                    <div class="image">
+                        <img src="/Assets/education/two.jpg" alt="Elementary School">
+                    </div>
+                    <div class="line"></div>
+                    <div class="texts">
+                        <div class="header">Elementary School</div>
+                        <div class="name">Dipalusan Elementary School</div>
+                        <div class="year">2008-2016</div>
+                        <div class="text">Completed elementary education, building a strong foundation in core subjects and extracurricular activities.</div>
                     </div>
                 </div>
             </div>
         </main>
-        <footer class="footer">
-            <div class="left">
-                &copy; 2023 • R. Charlox • All Rights Reserved
-            </div>
-            <div class="right">
-                <div class="social"><a href="https://www.facebook.com/ritoncharlox" target="_blank"><i
-                            class="fa-brands fa-facebook"></i></a></div>
-                <div class="social"><a href="https://www.instagram.com/ritoncharlox" target="_blank"><i class="fa-brands fa-instagram"></i></a></div>
-                <div class="social"><a href="https://www.linkedin.com/in/ritoncharlox" target="_blank"><i class="fa-brands fa-linkedin"></i></a></div>
-                <div class="social"><a href="https://github.com/ritoncharlox" target="_blank"><i class="fa-brands fa-github"></i></a></div>
-            </div>
-        </footer>
+        
+        
+        <!-- Placeholder for Footer -->
+        <div id="footer-placeholder"></div>
     </div>
 
 
@@ -102,6 +104,21 @@
     <div class="nav-touch-close" id="nav-tc-js"></div>
 
     <script type="text/javascript" src="../script/script.js"></script>
+
+    <script>
+
+        // Fetch and load the footer
+        fetch('components/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+    </script>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
 
 </body>
 

@@ -6,28 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Career</title>
     <link rel="stylesheet" type="text/css" href="../style/style.css">
-    <link rel="icon" href="Assets/favicons/favicon.png" type="image/png" sizes="32x32">
-
+    <link rel="icon" href="/Assets/favicons/favicon.png" type="image/png" sizes="32x32">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
 </head>
 
 <body>
 
+    <!-- Placeholder for Header -->
 
     <header class="header" id="header">
         <a href="../../index.html" class="logo"><span class="main-icon"></span><span>Jestly</span></a>
-
+    
         <div class="navbar">
             <a href="/index.html">Home</a>
-            <a href="./skills.html">skills</a>
+            <a href="./skills.html">Skills</a>
             <a href="./education.html">Education</a>
             <a href="./gallery.html">Gallery</a>
             <a href="./career.html" class="active">Career</a>
             <a href="./hobbies.html">Hobbies</a>
-            
         </div>
-
+    
         <div class="main">
             <a href="contact.html" class="user main-items"><i class="fas fa-envelope cm-icon"></i>Contact Me</a>
             <div class="main-items menu-icon-container" id="menu-icon-js">
@@ -35,29 +37,29 @@
             </div>
         </div>
     </header>
+    
 
     <div class="page">
-        <main class="career-main">
+        <main class="career-main" data-aos="fade-up" data-aos-duration="1200">
             <div class="career-section">
-                <div class="professional-summary">
+                <div class="professional-summary" data-aos="fade-right" data-aos-duration="1000">
                     <div class="ps-header career-header">
                         <div class="text">Professional Summary</div>
                         <div class="header-line"></div>
                     </div>
-                    <div class="texts">I'm Jestly, a creative problem-solver who's passionate about web development
-                        and design. With a background in coding and an eye for aesthetics, I'm on a mission to make the
-                        internet a better place, one pixel at a time. When I'm not glued to my screen, you'll find me
-                        exploring the great outdoors or experimenting in the kitchen. Let's connect and craft some
-                        digital
-                        magic!</div>
+                    <div class="texts">
+                        I'm Jestly, a creative problem-solver who's passionate about web development and design. 
+                        With a background in coding and an eye for aesthetics, I'm on a mission to make the internet a better place, one pixel at a time. 
+                        When I'm not glued to my screen, you'll find me exploring the great outdoors or experimenting in the kitchen. Let's connect and craft some digital magic!
+                    </div>
                 </div>
-                <div class="career-goals">
+                <div class="career-goals" data-aos="fade-left" data-aos-duration="1000">
                     <div class="cg-header career-header">
-                        <div class="text">Career goals</div>
+                        <div class="text">Career Goals</div>
                         <div class="header-line"></div>
                     </div>
                     <div class="goals">
-                        <div class="goals-row short-term-goals">
+                        <div class="goals-row short-term-goals" data-aos="zoom-in" data-aos-delay="200">
                             <div class="goals-header">
                                 <div class="text">Short-Term Goals</div>
                                 <div class="header-line"></div>
@@ -74,7 +76,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="goals-row long-term-goals">
+                        <div class="goals-row long-term-goals" data-aos="zoom-in" data-aos-delay="300">
                             <div class="goals-header">
                                 <div class="text">Long-Term Goals</div>
                                 <div class="header-line"></div>
@@ -95,27 +97,30 @@
                 </div>
             </div>
         </main>
-        <footer class="footer">
-            <div class="left">
-                &copy; 2023 • R. Charlox • All Rights Reserved
-            </div>
-            <div class="right">
-                <div class="social"><a href="https://www.facebook.com/ritoncharlox" target="_blank"><i
-                            class="fa-brands fa-facebook"></i></a></div>
-                <div class="social"><a href="https://www.instagram.com/ritoncharlox" target="_blank"><i class="fa-brands fa-instagram"></i></a></div>
-                <div class="social"><a href="https://www.linkedin.com/in/ritoncharlox" target="_blank"><i class="fa-brands fa-linkedin"></i></a></div>
-                <div class="social"><a href="https://github.com/ritoncharlox" target="_blank"><i class="fa-brands fa-github"></i></a></div>
-            </div>
-        </footer>
+        
+
+        <!-- Placeholder for Footer -->
+        <div id="footer-placeholder"></div>
     </div>
-        
-        
-        
-        
-        
-        <div class="nav-touch-close" id="nav-tc-js"></div>
+
+    <div class="nav-touch-close" id="nav-tc-js"></div>
 
     <script type="text/javascript" src="../script/script.js"></script>
+
+    <script>
+
+        // Fetch and load the footer
+        fetch('components/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+    </script>
+        <!-- AOS -->
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script>
+            AOS.init();
+        </script>
 
 </body>
 
