@@ -1474,8 +1474,8 @@ header.scrolled {
 	justify-content: center;
 	flex-direction: row;
 	/* flex-wrap: wrap; */
-	column-gap: 50px;
-	row-gap: 50px;
+	column-gap: 30px;
+	row-gap: 30px;
 }
 .hobbies-main .hobbies-section .section .row {
 	display: flex;
@@ -1484,8 +1484,8 @@ header.scrolled {
 	/* width: fit-content; */
 	flex-direction: row;
 	flex-wrap: wrap;
-	row-gap: 50px;
-	column-gap: 50px;
+	row-gap: 30px;
+	column-gap: 30px;
 }
 .hobbies-main .hobbies-section .section .row.first {
 	justify-content: flex-end;
@@ -1562,7 +1562,7 @@ header.scrolled {
 }
 
 .hobbies-main .hobbies-section .section .hobbies .text {
-	/* text-align: justify; */
+	text-align: center;
 	font-size: 0.95rem;
 	font-weight: 500;
 }
