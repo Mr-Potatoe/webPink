@@ -21,7 +21,6 @@ Netlify: [Responsive Portfolio Website](https://web-pink-red.vercel.app/)
 5. **Gallery:** Gallery showcasing images or projects.
 6. **Hobbies:** Section displaying hobbies and interests.
 7. **Skills:** Information about technical skills and expertise.
-8. **Testimonials:** Testimonials or reviews from clients or colleagues.
 
 ## Technologies Used
 
