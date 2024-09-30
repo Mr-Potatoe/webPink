@@ -22,7 +22,7 @@
 
         <div class="navbar">
             <a href="/index.html">Home</a>
-            <a href="./skills.html">skills</a>
+            <a href="./skills.html">Skills</a>
             <a href="./education.html">Education</a>
             <a href="./gallery.html" class="active">Gallery</a>
             <a href="./career.html">Career</a>
@@ -113,7 +113,54 @@
         <!-- AOS -->
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
         <script>
-            AOS.init();
+            document.addEventListener('DOMContentLoaded', function() {
+                AOS.init();  // Initialize AOS
+            
+                function applyAOSGalleryAnimations() {
+                    const galleryColumns = document.querySelectorAll('.gallery-section .column');
+                    const imageColumns = document.querySelectorAll('.gallery-section .image-column');
+            
+                    galleryColumns.forEach((column, index) => {
+                        column.removeAttribute('data-aos');  // Clear existing AOS attributes
+            
+                        // Apply different AOS animations based on screen size
+                        if (window.innerWidth >= 768) {
+                            column.setAttribute('data-aos', 'fade-up');
+                        } else {
+                            column.setAttribute('data-aos', 'fade-in');
+                        }
+                    });
+            
+                    imageColumns.forEach((imageCol, index) => {
+                        imageCol.removeAttribute('data-aos');  // Clear existing AOS attributes
+            
+                        // Apply fade animations based on column position and screen size
+                        if (window.innerWidth >= 768) {
+                            if (index % 3 === 0) {
+                                imageCol.setAttribute('data-aos', 'fade-right');
+                            } else if (index % 3 === 1) {
+                                imageCol.setAttribute('data-aos', 'fade-up');
+                            } else {
+                                imageCol.setAttribute('data-aos', 'fade-left');
+                            }
+                        } else {
+                            imageCol.setAttribute('data-aos', 'fade-in');  // Subtle animations for smaller screens
+                        }
+                    });
+            
+                    // Refresh AOS to apply the new animations
+                    AOS.refresh();
+                }
+            
+                // Initial call to apply animations based on current screen size
+                applyAOSGalleryAnimations();
+            
+                // Re-apply animations and refresh AOS on window resize
+                window.addEventListener('resize', function() {
+                    applyAOSGalleryAnimations();
+                });
+            });
+            
         </script>
 
 </body>

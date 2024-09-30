@@ -91,6 +91,32 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
     AOS.init();
+    function applyAOSAnimations() {
+    const aboutSectionElements = document.querySelectorAll('.about-content .column');
+    aboutSectionElements.forEach((el) => {
+        // Remove any existing AOS attributes
+        el.removeAttribute('data-aos');
+
+        // Apply AOS animations based on screen width
+        if (window.innerWidth >= 768) {
+            el.setAttribute('data-aos', el.classList.contains('right') ? 'fade-left' : 'fade-right');
+        } else {
+            el.setAttribute('data-aos', 'fade-in'); // Use a subtle animation for mobile
+        }
+    });
+
+    // Refresh AOS to apply the new animations
+    AOS.refresh();
+}
+
+// Initial call to apply animations based on the current screen width
+applyAOSAnimations();
+
+// Re-apply animations and refresh AOS on window resize
+window.addEventListener('resize', function() {
+    applyAOSAnimations();
+});
+
 </script>
 
 

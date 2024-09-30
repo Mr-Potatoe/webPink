@@ -21,7 +21,7 @@
 
         <div class="navbar">
             <a href="/index.html">Home</a>
-            <a href="./skills.html">skills</a>
+            <a href="./skills.html">Skills</a>
             <a href="./education.html" class="active">Education</a>
             <a href="./gallery.html">Gallery</a>
             <a href="./career.html">Career</a>
@@ -117,7 +117,40 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init();
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init();  // Initialize AOS
+        
+            function applyAOSEducationAnimations() {
+                const educationStudies = document.querySelectorAll('.education-section .study');
+        
+                educationStudies.forEach((study, index) => {
+                    study.removeAttribute('data-aos');  // Clear existing AOS attributes
+        
+                    // Apply different AOS animations based on screen size
+                    if (window.innerWidth >= 768) {
+                        if (index % 2 === 0) {
+                            study.setAttribute('data-aos', 'fade-right');
+                        } else {
+                            study.setAttribute('data-aos', 'fade-left');
+                        }
+                    } else {
+                        study.setAttribute('data-aos', 'fade-in');  // Subtle animations for smaller screens
+                    }
+                });
+        
+                // Refresh AOS to apply the new animations
+                AOS.refresh();
+            }
+        
+            // Initial call to apply animations based on current screen size
+            applyAOSEducationAnimations();
+        
+            // Re-apply animations and refresh AOS on window resize
+            window.addEventListener('resize', function() {
+                applyAOSEducationAnimations();
+            });
+        });
+        
     </script>
 
 </body>
