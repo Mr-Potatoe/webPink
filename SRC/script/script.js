@@ -18,9 +18,9 @@ navtc.onclick = () => {
 }
 
 /* When the user scrolls down, hide the navbar. When the user scrolls up, show the navbar */
-var prevScrollpos = window.pageYOffset;
+var prevScrollpos = window.scrollY;
 window.onscroll = function () {
-	var currentScrollPos = window.pageYOffset;
+	var currentScrollPos = window.scrollY;
 
 	document.getElementById("header").classList.add('scrolled');
 	if (currentScrollPos === 0) {

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Gallery</title>
+    <title>About Me</title>
     <link rel="stylesheet" type="text/css" href="../style/style.css">
     <link rel="icon" href="/Assets/favicons/favicon.png" type="image/png" sizes="32x32">
 
@@ -24,13 +24,13 @@
             <a href="/index.html">Home</a>
             <a href="./skills.html">Skills</a>
             <a href="./education.html">Education</a>
-            <a href="./gallery.html" class="active">Gallery</a>
+            <a href="./aboutme.html" class="active">About Me</a>
             <a href="./career.html">Career</a>
             <a href="./hobbies.html">Hobbies</a>
             
         </div>
 
-        <div class="main">
+       <div class="contact">
             <a href="contact.html" class="user main-items"><i class="fas fa-envelope cm-icon"></i>Contact Me</a>
             <div class="main-items menu-icon-container" id="menu-icon-js">
                 <div class="bx bx-menu" id="menu-icon"></div>
@@ -39,57 +39,36 @@
     </header>
 
     <div class="page">
-        <main class="gallery-main">
-            <div class="gallery-section">
-                <div class="column nepal" data-aos="fade-up" data-aos-duration="1000">
-                    <div class="header">
-                        <div class="header-line"></div>
-                        <div class="text">Nepal <i class="fa-solid fa-camera"></i></div>
-                        <div class="header-line right"></div>
-                    </div>
-                    <div class="images">
-                        <div class="first image-column" data-aos="fade-right" data-aos-duration="800">
-                            <img src="/Assets/gallery/Nepal/new 5 cropped.jpeg" alt="">
-                            <img src="/Assets/gallery/Nepal/new 4.jpeg" alt="">
-                            <img src="/Assets/gallery/Nepal/1 (9).jpeg" alt="">
-                        </div>
-                        <div class="second image-column" data-aos="fade-up" data-aos-duration="800">
-                            <img src="/Assets/gallery/Nepal/1 (5).jpg" alt="">
-                            <img src="/Assets/gallery/Nepal/1 (1).jpeg" alt="">
-                            <img src="/Assets/gallery/Nepal/new 6.jpeg" alt="">
-                        </div>
-                        <div class="third image-column" data-aos="fade-left" data-aos-duration="800">
-                            <img src="/Assets/gallery/Nepal/new 1.jpg" alt="">
-                            <img src="/Assets/gallery/Nepal/1 (8).jpeg" alt="">
-                            <img src="/Assets/gallery/Nepal/1 (4).jpg" alt="">
-                        </div>
-                    </div>
+
+        <main class="career-main" data-aos="fade-up" data-aos-duration="1200">
+            <div class="career-section">
+                <div class="professional-summary" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="ps-header career-header"> 
+                        <div class="text">About Me</div>
+                    <div class="header-line"></div>
                 </div>
-                <div class="column australia" data-aos="fade-up" data-aos-duration="1000">
-                    <div class="header">
-                        <div class="header-line"></div>
-                        <div class="text">Australia <i class="fa-solid fa-camera"></i></div>
-                        <div class="header-line right"></div>
-                    </div>
-                    <div class="images">
-                        <div class="first image-column" data-aos="fade-right" data-aos-duration="800">
-                            <img src="/Assets/gallery/Australia/1 (1).jpeg" alt="">
-                            <img src="/Assets/gallery/Australia/1 (3).jpg" alt="">
-                            <img src="/Assets/gallery/Australia/1 (2).jpeg" alt="">
-                        </div>
-                        <div class="second image-column" data-aos="fade-up" data-aos-duration="800">
-                            <img src="/Assets/gallery/Australia/1 (5).jpg" alt="">
-                            <img src="/Assets/gallery/Australia/1 (1).jpg" alt="">
-                            <img src="/Assets/gallery/Australia/1 (2).jpg" alt="">
-                        </div>
-                        <div class="third image-column" data-aos="fade-left" data-aos-duration="800">
-                            <img src="/Assets/gallery/Australia/1 (4).jpg" alt="">
-                            <img src="/Assets/gallery/Australia/1 (3).jpeg" alt="">
-                            <img src="/Assets/gallery/Australia/1 (6).jpg" alt="">
-                        </div>
-                    </div>
+                <div class="about-cont">
+                    <p style="text-align: justify;">
+                        Hello! I’m an aspiring Web Developer with a growing passion for creating user-friendly and visually appealing web solutions. 
+                        At 20 years old, I’m still early in my journey, but I’ve been actively learning and building a foundation in both front-end 
+                        and back-end technologies. My interest in web development comes from a desire to solve problems creatively and explore new ideas 
+                        in the digital world. 
+                        <br><br>
+                        Currently, I’m furthering my education at Northwestern Mindanao State College of Science and Technology, where I’m constantly 
+                        exploring new tools and techniques to improve my skills. While I’m still in the early stages, I’m committed to learning, growing, 
+                        and contributing to projects that help me refine my abilities. 
+                        <br><br>
+                        Outside of my studies, I love experimenting with new technologies and collaborating on exciting projects. My goal is to create 
+                        websites that not only look great but also provide smooth user experiences. I’m eager to continue improving, learning from others, 
+                        and building something meaningful.
+                    </p>
+                    
+                    
                 </div>
             </div>
+
+        </div>
+
         </main>
         
         <!-- Placeholder for Footer -->
@@ -116,7 +95,7 @@
             document.addEventListener('DOMContentLoaded', function() {
                 AOS.init();  // Initialize AOS
             
-                function applyAOSGalleryAnimations() {
+                function applyAOSAboutMeAnimations() {
                     const galleryColumns = document.querySelectorAll('.gallery-section .column');
                     const imageColumns = document.querySelectorAll('.gallery-section .image-column');
             
@@ -153,11 +132,11 @@
                 }
             
                 // Initial call to apply animations based on current screen size
-                applyAOSGalleryAnimations();
+                applyAOSAboutMeAnimations();
             
                 // Re-apply animations and refresh AOS on window resize
                 window.addEventListener('resize', function() {
-                    applyAOSGalleryAnimations();
+                    applyAOSAboutMeAnimations();
                 });
             });
             

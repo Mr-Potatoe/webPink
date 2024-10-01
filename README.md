@@ -18,7 +18,7 @@ Vercel: [Responsive Portfolio Website](https://web-pink-red.vercel.app/)
 2. **Career:** Information about career history and experience.
 3. **Contact:** Functional contact form using emailjs to send emails.
 4. **Education:** Details about educational background and qualifications.
-5. **Gallery:** Gallery showcasing images or projects.
+5. **About Me:** About Me showcasing images or projects.
 6. **Hobbies:** Section displaying hobbies and interests.
 7. **Skills:** Information about technical skills and expertise.
 
