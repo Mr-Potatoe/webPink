@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heat Index Table Heatmap</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+
+        /* Color ranges based on heat index */
+        .low {
+            background-color: #9fc5e8; /* Light blue for lower heat index */
+            color: #000;
+        }
+
+        .moderate {
+            background-color: #ffe599; /* Yellow for moderate heat index */
+            color: #000;
+        }
+
+        .high {
+            background-color: #f6b26b; /* Orange for high heat index */
+            color: #000;
+        }
+
+        .very-high {
+            background-color: #e06666; /* Red for very high heat index */
+            color: #fff;
+        }
+
+        .extreme {
+            background-color: #cc0000; /* Dark red for extreme heat index */
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Heat Index Table (May 25-28, 2024)</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Location</th>
+            <th>25-May</th>
+            <th>26-May</th>
+            <th>27-May</th>
+            <th>28-May</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Sinait, Ilocos Sur</td>
+            <td class="high">43°C</td>
+            <td class="very-high">45°C</td>
+            <td class="high">42°C</td>
+            <td class="high">41°C</td>
+        </tr>
+        <tr>
+            <td>Laoag City, Ilocos Norte</td>
+            <td class="very-high">47°C</td>
+            <td class="extreme">48°C</td>
+            <td class="high">44°C</td>
+            <td class="high">42°C</td>
+        </tr>
+        <tr>
+            <td>Dagupan City, Pangasinan</td>
+            <td class="high">44°C</td>
+            <td class="high">43°C</td>
+            <td class="high">42°C</td>
+            <td class="high">42°C</td>
+        </tr>
+        <tr>
+            <td>MMSU, Batac, Ilocos Norte</td>
+            <td class="high">43°C</td>
+            <td class="very-high">46°C</td>
+            <td class="high">43°C</td>
+            <td class="high">42°C</td>
+        </tr>
+        <tr>
+            <td>Aparri, Cagayan</td>
+            <td class="very-high">48°C</td>
+            <td class="very-high">46°C</td>
+            <td class="high">42°C</td>
+            <td class="high">43°C</td>
+        </tr>
+        <tr>
+            <td>Tuguegarao City, Cagayan</td>
+            <td class="moderate">40°C</td>
+            <td class="moderate">39°C</td>
+            <td class="high">43°C</td>
+            <td class="high">44°C</td>
+        </tr>
+        <tr>
+            <td>Guiuan, Eastern Samar</td>
+            <td class="moderate">40°C</td>
+            <td class="extreme">55°C</td>
+            <td class="very-high">46°C</td>
+            <td class="very-high">47°C</td>
+        </tr>
+        <tr>
+            <td>Zamboanga City, Zamboanga Del Sur</td>
+            <td class="high">44°C</td>
+            <td class="very-high">46°C</td>
+            <td class="very-high">45°C</td>
+            <td class="very-high">45°C</td>
+        </tr>
+        <tr>
+            <td>Laguindingan Airport, Misamis Oriental</td>
+            <td class="moderate">39°C</td>
+            <td class="very-high">45°C</td>
+            <td class="very-high">44°C</td>
+            <td class="very-high">44°C</td>
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

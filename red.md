@@ -1,0 +1,10 @@
+Introduction & Project Background
+
+Overview of the Heat Index Map Project:
+The *Heat Index Map* project aims to create a digital platform that monitors and displays real-time heat index levels across the Zamboanga del Sur Provincial Government College (Aurora Campus). The project uses sensors placed strategically around the campus to measure temperature and humidity. By calculating the heat index, we provide a clear understanding of how hot it actually feels to people in different locations, which is vital for ensuring the well-being of students, staff, and visitors. The map will also serve as a decision-making tool for campus administrators to take proactive steps in managing heat-related risks.
+
+Importance of Monitoring Heat Index on Campus:
+Monitoring the heat index is crucial in educational institutions like ours, where students and staff spend significant time outdoors, especially during physical activities. Prolonged exposure to high heat index levels can result in health risks such as heat exhaustion, heat cramps, and even heatstroke. By having a system in place that tracks heat index levels in real-time, the school can take timely precautions, including issuing alerts, adjusting outdoor schedules, and providing access to cooling areas to safeguard the health and safety of the school community.
+
+Temporary Use of PAGASA Data for Validation:
+At this stage, while we are in the process of setting up our sensor network, we are temporarily relying on heat index data from PAGASA (Philippine Atmospheric, Geophysical and Astronomical Services Administration) for validation purposes. Using this external data allows us to simulate how our system will function once our local data becomes available. The PAGASA data, being widely trusted and regionally relevant, helps us test the accuracy of our algorithms, verify the visualization methods, and ensure the functionality of the heat map in representing real-world scenarios. Once the sensors are fully operational, the system will shift to using live data from our campus.
