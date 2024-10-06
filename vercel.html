@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRUD Frontend</title>
+  <script>
+    const baseURL = 'https://53c1-122-55-229-246.ngrok-free.app/api/users';
+
+    // Create User
+    async function createUser() {
+      const name = prompt('Enter name:');
+      const email = prompt('Enter email:');
+      const password = prompt('Enter password:');
+
+      const response = await fetch(baseURL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, password })
+      });
+
+      const data = await response.json();
+      console.log(data);
+    }
+
+    // Read All Users
+    async function readUsers() {
+      const response = await fetch(baseURL);
+      const data = await response.json();
+      document.getElementById('output').innerHTML = JSON.stringify(data, null, 2);
+    }
+
+    // Update User
+    async function updateUser() {
+      const id = prompt('Enter user ID to update:');
+      const name = prompt('Enter new name:');
+      const email = prompt('Enter new email:');
+      const password = prompt('Enter new password:');
+
+      const response = await fetch(`${baseURL}/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, password })
+      });
+
+      const data = await response.json();
+      console.log(data);
+    }
+
+    // Delete User
+    async function deleteUser() {
+      const id = prompt('Enter user ID to delete:');
+
+      const response = await fetch(`${baseURL}/${id}`, {
+        method: 'DELETE'
+      });
+
+      const data = await response.json();
+      console.log(data);
+    }
+  </script>
+</head>
+<body>
+  <h1>CRUD Operations</h1>
+
+  <button onclick="createUser()">Create User</button>
+  <button onclick="readUsers()">Read All Users</button>
+  <button onclick="updateUser()">Update User</button>
+  <button onclick="deleteUser()">Delete User</button>
+
+  <pre id="output"></pre>
+</body>
+</html>
