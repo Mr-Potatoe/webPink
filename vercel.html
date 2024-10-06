@@ -1,104 +1,242 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CRUD Frontend</title>
-  <script>
-    const baseURL = 'https://9e39-124-6-136-78.ngrok-free.app/api/users';
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Frontend</title>
 
-    // Create User
-    async function createUser() {
-      const name = prompt('Enter name:');
-      const email = prompt('Enter email:');
-      const password = prompt('Enter password:');
+    <!-- Include Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
-      const response = await fetch(baseURL, {
-        method: 'POST',
-        headers: { 
-          'Content-Type': 'application/json',
-          'ngrok-skip-browser-warning': 'true' // Bypass ngrok warning
-        },
-        body: JSON.stringify({ name, email, password })
-      });
+    <!-- Include Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-uMoxEY/T4+pM6SRW1aN7t26xxXo+cf+uVNiFCp1/T/f1YtTeX7qYfb0mfUHzBlJnh5irB6e9PEQlqB+9yW8hmg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-      const data = await response.json();
-      console.log(data);
-    }
-
-    // Read All Users
-    async function getUsers() {
-      try {
-        const response = await fetch(baseURL, {
-          method: 'GET',
-          headers: { 
-            'ngrok-skip-browser-warning': 'true' // Bypass ngrok warning
-          }
-        });
-        
-        if (!response.ok) {
-          throw new Error(`Error: ${response.status} - ${response.statusText}`);
+    <!-- Custom Style -->
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
         }
-    
-        const text = await response.text();
-        console.log('Response Text:', text);
-        
-        const users = JSON.parse(text);
-    
-        if (users.length === 0) {
-          document.getElementById('output').innerHTML = 'No users found.';
-        } else {
-          document.getElementById('output').innerHTML = JSON.stringify(users, null, 2);
-        }
-      } catch (error) {
-        document.getElementById('output').innerHTML = `Error: ${error.message}`;
-      }
-    }
-
-    // Update User
-    async function updateUser() {
-      const id = prompt('Enter user ID to update:');
-      const name = prompt('Enter new name:');
-      const email = prompt('Enter new email:');
-      const password = prompt('Enter new password:');
-
-      const response = await fetch(`${baseURL}/${id}`, {
-        method: 'PUT',
-        headers: { 
-          'Content-Type': 'application/json',
-          'ngrok-skip-browser-warning': 'true' // Bypass ngrok warning
-        },
-        body: JSON.stringify({ name, email, password })
-      });
-
-      const data = await response.json();
-      console.log(data);
-    }
-
-    // Delete User
-    async function deleteUser() {
-      const id = prompt('Enter user ID to delete:');
-
-      const response = await fetch(`${baseURL}/${id}`, {
-        method: 'DELETE',
-        headers: {
-          'ngrok-skip-browser-warning': 'true' // Bypass ngrok warning
-        }
-      });
-
-      const data = await response.json();
-      console.log(data);
-    }
-  </script>
+    </style>
 </head>
-<body>
-  <h1>CRUD Operations</h1>
 
-  <button onclick="createUser()">Create User</button>
-  <button onclick="getUsers()">Read All Users</button>
-  <button onclick="updateUser()">Update User</button>
-  <button onclick="deleteUser()">Delete User</button>
+<body class="bg-gray-100 p-10">
+    <div class="max-w-4xl mx-auto bg-white shadow-lg rounded-lg p-8">
+        <h1 class="text-4xl font-bold text-center mb-6">CRUD Operations</h1>
 
-  <pre id="output"></pre>
+        <div class="flex justify-center mb-8">
+            <table class="table-auto">
+                <tr>
+                    <td class="px-4 py-2">
+                        <button onclick="openCreateModal()" class="bg-blue-500 text-white px-4 py-2 rounded shadow hover:bg-blue-700 transition duration-300">
+                            <i class="fas fa-plus"></i> Create User
+                        </button>
+                    </td>
+                    <td class="px-4 py-2">
+                        <button onclick="getUsers()" class="bg-green-500 text-white px-4 py-2 rounded shadow hover:bg-green-700 transition duration-300">
+                            <i class="fas fa-list"></i> Read All Users
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="px-4 py-2">
+                        <button onclick="openUpdateModal()" class="bg-yellow-500 text-white px-4 py-2 rounded shadow hover:bg-yellow-700 transition duration-300">
+                            <i class="fas fa-edit"></i> Update User
+                        </button>
+                    </td>
+                    <td class="px-4 py-2">
+                        <button onclick="openDeleteModal()" class="bg-red-500 text-white px-4 py-2 rounded shadow hover:bg-red-700 transition duration-300">
+                            <i class="fas fa-trash"></i> Delete User
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Output Table -->
+        <div class="overflow-x-auto">
+            <table class="min-w-full table-auto bg-gray-200 rounded-lg">
+                <thead>
+                    <tr class="bg-gray-300 text-gray-700">
+                        <th class="px-4 py-2">ID</th>
+                        <th class="px-4 py-2">Name</th>
+                        <th class="px-4 py-2">Email</th>
+                        <th class="px-4 py-2">Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="output" class="text-gray-800">
+                    <!-- User data will be dynamically added here -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Modals -->
+        <!-- Create User Modal -->
+        <div id="createUserModal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden">
+            <div class="bg-white rounded-lg p-6">
+                <h2 class="text-xl font-bold mb-4">Create User</h2>
+                <input id="createName" type="text" placeholder="Name" class="border border-gray-300 rounded p-2 mb-2 w-full">
+                <input id="createEmail" type="email" placeholder="Email" class="border border-gray-300 rounded p-2 mb-2 w-full">
+                <input id="createPassword" type="password" placeholder="Password" class="border border-gray-300 rounded p-2 mb-2 w-full">
+                <button onclick="createUser()" class="bg-blue-500 text-white px-4 py-2 rounded shadow hover:bg-blue-700 transition duration-300">Create</button>
+                <button onclick="closeCreateModal()" class="bg-gray-300 text-gray-700 px-4 py-2 rounded shadow hover:bg-gray-400 transition duration-300">Cancel</button>
+            </div>
+        </div>
+
+        <!-- Update User Modal -->
+        <div id="updateUserModal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden">
+            <div class="bg-white rounded-lg p-6">
+                <h2 class="text-xl font-bold mb-4">Update User</h2>
+                <input id="updateUserId" type="text" placeholder="User ID" class="border border-gray-300 rounded p-2 mb-2 w-full">
+                <input id="updateName" type="text" placeholder="New Name" class="border border-gray-300 rounded p-2 mb-2 w-full">
+                <input id="updateEmail" type="email" placeholder="New Email" class="border border-gray-300 rounded p-2 mb-2 w-full">
+                <input id="updatePassword" type="password" placeholder="New Password" class="border border-gray-300 rounded p-2 mb-2 w-full">
+                <button onclick="updateUser()" class="bg-yellow-500 text-white px-4 py-2 rounded shadow hover:bg-yellow-700 transition duration-300">Update</button>
+                <button onclick="closeUpdateModal()" class="bg-gray-300 text-gray-700 px-4 py-2 rounded shadow hover:bg-gray-400 transition duration-300">Cancel</button>
+            </div>
+        </div>
+
+        <!-- Delete User Modal -->
+        <div id="deleteUserModal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden">
+            <div class="bg-white rounded-lg p-6">
+                <h2 class="text-xl font-bold mb-4">Delete User</h2>
+                <input id="deleteUserId" type="text" placeholder="User ID" class="border border-gray-300 rounded p-2 mb-2 w-full">
+                <button onclick="deleteUser()" class="bg-red-500 text-white px-4 py-2 rounded shadow hover:bg-red-700 transition duration-300">Delete</button>
+                <button onclick="closeDeleteModal()" class="bg-gray-300 text-gray-700 px-4 py-2 rounded shadow hover:bg-gray-400 transition duration-300">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const baseURL = 'https://9e39-124-6-136-78.ngrok-free.app/api/users';
+
+        // Create User
+        async function createUser() {
+            const name = document.getElementById('createName').value;
+            const email = document.getElementById('createEmail').value;
+            const password = document.getElementById('createPassword').value;
+
+            const response = await fetch(baseURL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'ngrok-skip-browser-warning': 'true' // Bypass ngrok warning
+                },
+                body: JSON.stringify({ name, email, password })
+            });
+
+            const data = await response.json();
+            console.log(data);
+            closeCreateModal();
+            getUsers(); // Refresh user list
+        }
+
+        // Read All Users
+        async function getUsers() {
+            try {
+                const response = await fetch(baseURL, {
+                    method: 'GET',
+                    headers: { 'ngrok-skip-browser-warning': 'true' }
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Error: ${response.status} - ${response.statusText}`);
+                }
+
+                const users = await response.json();
+
+                const output = document.getElementById('output');
+                output.innerHTML = ''; // Clear the existing content
+
+                if (users.length === 0) {
+                    output.innerHTML = '<tr><td colspan="4" class="text-center px-4 py-2">No users found.</td></tr>';
+                } else {
+                    users.forEach(user => {
+                        output.innerHTML += `
+                            <tr class="border-t">
+                                <td class="px-4 py-2">${user.id}</td>
+                                <td class="px-4 py-2">${user.name}</td>
+                                <td class="px-4 py-2">${user.email}</td>
+                                <td class="px-4 py-2">
+                                    <button onclick="openUpdateModal(${user.id})" class="text-yellow-500 hover:text-yellow-700">Edit</button>
+                                    <button onclick="openDeleteModal(${user.id})" class="text-red-500 hover:text-red-700">Delete</button>
+                                </td>
+                            </tr>
+                        `;
+                    });
+                }
+            } catch (error) {
+                console.error('Error fetching users:', error);
+            }
+        }
+
+        // Update User
+        async function updateUser() {
+            const id = document.getElementById('updateUserId').value;
+            const name = document.getElementById('updateName').value;
+            const email = document.getElementById('updateEmail').value;
+            const password = document.getElementById('updatePassword').value;
+
+            const response = await fetch(`${baseURL}/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'ngrok-skip-browser-warning': 'true'
+                },
+                body: JSON.stringify({ name, email, password })
+            });
+
+            const data = await response.json();
+            console.log(data);
+            closeUpdateModal();
+            getUsers(); // Refresh user list
+        }
+
+        // Delete User
+        async function deleteUser() {
+            const id = document.getElementById('deleteUserId').value;
+
+            const response = await fetch(`${baseURL}/${id}`, {
+                method: 'DELETE',
+                headers: {
+                    'ngrok-skip-browser-warning': 'true'
+                }
+            });
+
+            const data = await response.json();
+            console.log(data);
+            closeDeleteModal();
+            getUsers(); // Refresh user list
+        }
+
+        // Modal functions
+        function openCreateModal() {
+            document.getElementById('createUserModal').classList.remove('hidden');
+        }
+        
+        function closeCreateModal() {
+            document.getElementById('createUserModal').classList.add('hidden');
+        }
+
+        function openUpdateModal(userId) {
+            document.getElementById('updateUserId').value = userId;
+            document.getElementById('updateName').value = ''; // Clear input
+            document.getElementById('updateEmail').value = ''; // Clear input
+            document.getElementById('updatePassword').value = ''; // Clear input
+            document.getElementById('updateUserModal').classList.remove('hidden');
+        }
+
+        function closeUpdateModal() {
+            document.getElementById('updateUserModal').classList.add('hidden');
+        }
+
+        function openDeleteModal(userId) {
+            document.getElementById('deleteUserId').value = userId;
+            document.getElementById('deleteUserModal').classList.remove('hidden');
+        }
+
+        function closeDeleteModal() {
+            document.getElementById('deleteUserModal').classList.add('hidden');
+        }
+    </script>
 </body>
 </html>
