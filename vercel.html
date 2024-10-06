@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CRUD Frontend</title>
   <script>
-    const baseURL = 'https://53c1-122-55-229-246.ngrok-free.app/api/users';
+    const baseURL = 'https://9e39-124-6-136-78.ngrok-free.app/api/users';
 
     // Create User
     async function createUser() {
@@ -15,7 +15,10 @@
 
       const response = await fetch(baseURL, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'ngrok-skip-browser-warning': 'true' // Bypass ngrok warning
+        },
         body: JSON.stringify({ name, email, password })
       });
 
@@ -24,32 +27,33 @@
     }
 
     // Read All Users
-    // Read All Users
-async function readUsers() {
-    try {
-      const response = await fetch(baseURL);
-  
-      // Check if the response is OK
-      if (!response.ok) {
-        throw new Error(`Error: ${response.status} - ${response.statusText}`);
+    async function getUsers() {
+      try {
+        const response = await fetch(baseURL, {
+          method: 'GET',
+          headers: { 
+            'ngrok-skip-browser-warning': 'true' // Bypass ngrok warning
+          }
+        });
+        
+        if (!response.ok) {
+          throw new Error(`Error: ${response.status} - ${response.statusText}`);
+        }
+    
+        const text = await response.text();
+        console.log('Response Text:', text);
+        
+        const users = JSON.parse(text);
+    
+        if (users.length === 0) {
+          document.getElementById('output').innerHTML = 'No users found.';
+        } else {
+          document.getElementById('output').innerHTML = JSON.stringify(users, null, 2);
+        }
+      } catch (error) {
+        document.getElementById('output').innerHTML = `Error: ${error.message}`;
       }
-  
-      // Parse the JSON data
-      const data = await response.json();
-  
-      // Ensure there is data before displaying
-      if (data.length === 0) {
-        document.getElementById('output').innerHTML = 'No users found.';
-      } else {
-        // Display data in a formatted way
-        document.getElementById('output').innerHTML = JSON.stringify(data, null, 2);
-      }
-    } catch (error) {
-      // Display the error if something goes wrong
-      document.getElementById('output').innerHTML = `Error: ${error.message}`;
     }
-  }
-  
 
     // Update User
     async function updateUser() {
@@ -60,7 +64,10 @@ async function readUsers() {
 
       const response = await fetch(`${baseURL}/${id}`, {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'ngrok-skip-browser-warning': 'true' // Bypass ngrok warning
+        },
         body: JSON.stringify({ name, email, password })
       });
 
@@ -73,7 +80,10 @@ async function readUsers() {
       const id = prompt('Enter user ID to delete:');
 
       const response = await fetch(`${baseURL}/${id}`, {
-        method: 'DELETE'
+        method: 'DELETE',
+        headers: {
+          'ngrok-skip-browser-warning': 'true' // Bypass ngrok warning
+        }
       });
 
       const data = await response.json();
@@ -85,7 +95,7 @@ async function readUsers() {
   <h1>CRUD Operations</h1>
 
   <button onclick="createUser()">Create User</button>
-  <button onclick="readUsers()">Read All Users</button>
+  <button onclick="getUsers()">Read All Users</button>
   <button onclick="updateUser()">Update User</button>
   <button onclick="deleteUser()">Delete User</button>
 
