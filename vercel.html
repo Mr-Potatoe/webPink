@@ -24,11 +24,32 @@
     }
 
     // Read All Users
-    async function readUsers() {
+    // Read All Users
+async function readUsers() {
+    try {
       const response = await fetch(baseURL);
+  
+      // Check if the response is OK
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status} - ${response.statusText}`);
+      }
+  
+      // Parse the JSON data
       const data = await response.json();
-      document.getElementById('output').innerHTML = JSON.stringify(data, null, 2);
+  
+      // Ensure there is data before displaying
+      if (data.length === 0) {
+        document.getElementById('output').innerHTML = 'No users found.';
+      } else {
+        // Display data in a formatted way
+        document.getElementById('output').innerHTML = JSON.stringify(data, null, 2);
+      }
+    } catch (error) {
+      // Display the error if something goes wrong
+      document.getElementById('output').innerHTML = `Error: ${error.message}`;
     }
+  }
+  
 
     // Update User
     async function updateUser() {
